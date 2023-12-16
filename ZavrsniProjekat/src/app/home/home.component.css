@@ -1,0 +1,7 @@
+.header-img {
+    background-image: url(../../assets/imgs/flowerBackground1.jpg);
+    background-size: cover;
+    min-height: 550px;
+    margin-top: 50px;
+    padding-top: 200px;
+}
