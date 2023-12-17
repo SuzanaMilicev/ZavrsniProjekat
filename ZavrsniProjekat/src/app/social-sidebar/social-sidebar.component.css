@@ -1,0 +1,6 @@
+.social-sidebar {
+    min-width: 25px;
+    position: fixed;
+    right: 0;
+    top: 60%;
+}

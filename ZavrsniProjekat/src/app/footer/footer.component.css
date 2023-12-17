@@ -1,0 +1,12 @@
+.getwell-pink {
+    background-color: #FFA7B6;
+    min-height: 400px;
+    padding-top: 150px;
+}
+
+.getwell-flowers {
+    background-image: url(../../assets/imgs/FTD_SplitBanner_Merx_1.png);
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
