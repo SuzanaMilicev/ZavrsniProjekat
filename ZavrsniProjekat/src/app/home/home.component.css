@@ -1,7 +1,20 @@
 .header-img {
     background-image: url(../../assets/imgs/flowerBackground1.jpg);
     background-size: cover;
+    background-position: center;
     min-height: 550px;
-    margin-top: 50px;
+    margin-top: 75px;
     padding-top: 200px;
+}
+
+.grid-item {
+    max-width: 275px;
+}
+
+.border-bottom {
+    border-width: 0 0 1px 0 !important;
+}
+
+#subscribeButton {
+    margin-top: 32px !important;
 }
