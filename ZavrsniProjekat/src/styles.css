@@ -3,3 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.icon {
+    font-size: 18px !important;
+    padding-left: 7px;
+}
