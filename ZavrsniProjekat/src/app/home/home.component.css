@@ -1,5 +1,5 @@
 .header-img {
-    background-image: url(../../assets/imgs/flowerBackground1.jpg);
+    background-image: url(../../assets/home/FTD_SplitBanner_Merx_1.png);
     background-size: cover;
     background-position: center;
     min-height: 550px;
@@ -17,4 +17,17 @@
 
 #subscribeButton {
     margin-top: 32px !important;
+}
+
+.getwell-pink {
+    background-color: #FFA7B6;
+    min-height: 400px;
+    padding-top: 150px;
+}
+
+.getwell-flowers {
+    background-image: url(../../assets/home/flowerBackground1.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
 }
