@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SocialSidebarComponent } from './social-sidebar/social-sidebar.component';
+import { FlowersService } from './services/flowers.service';
+import { ShopComponent } from './shop/shop.component';
+import { CategoryComponent } from './shop/category/category.component';
+import { ProductComponent } from './shop/product/product.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +19,17 @@ import { SocialSidebarComponent } from './social-sidebar/social-sidebar.componen
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    SocialSidebarComponent
+    SocialSidebarComponent,
+    ShopComponent,
+    CategoryComponent,
+    ProductComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ FlowersService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,48 +37,15 @@
 <!-- GRID FLOWERS  -->
 <div class="container text-center">
     <div class="row align-items-center justify-content-center">
+        @for(flower of flowers; track flower){
         <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower1.jpeg" alt="flower1" class="img-fluid">
-            <h6 class="mt-1">Fiesta Bouquet</h6>
-            <p>$60</p>
+            <img [src]="flower.imgSrc" class="img-fluid" alt="flowers">
+            <h6 class="mt-1">{{ flower.name }}</h6>
+            <p>{{ flower.price }}$</p>
         </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower2.jpeg" alt="flower2" class="img-fluid">
-            <h6 class="mt-1">Alluring Elegance Bouquet</h6>
-            <p>$72</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower3.jpeg" alt="flower3" class="img-fluid">
-            <h6 class="mt-1">Beyound Blue Bouquet</h6>
-            <p>$55</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower4.jpeg" alt="flower4" class="img-fluid">
-            <h6 class="mt-1">Mixed Roses</h6>
-            <p>$35</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower5.jpeg" alt="flower5" class="img-fluid">
-            <h6 class="mt-1">Belle of the Ball Bouquet</h6>
-            <p>$45</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower6.jpeg" alt="flower6" class="img-fluid">
-            <h6 class="mt-1">Rainbow Garden</h6>
-            <p>$50</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower7.jpeg" alt="flower7" class="img-fluid">
-            <h6 class="mt-1">Best Day Bouquet</h6>
-            <p>$61</p>
-        </div>
-        <div class="col-lg-3 col-md-6 grid-item m-3">
-            <img src="assets/imgs/flower8.jpeg" alt="flower8" class="img-fluid">
-            <h6 class="mt-1">Smiles & Sunshine</h6>
-            <p>$45</p>
-        </div>
+        }
     </div>
-    <button class="btn btn-outline-secondary mb-5">Load more</button>
+    <button class="btn btn-outline-secondary mb-5" (click)="loadShop()">Load more</button>
 </div>
 
 <!-- FORM & INFO  -->
@@ -139,6 +106,19 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- SHOP GETWEL FLOWERS -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-6 text-center text-light getwell-pink">
+            <h2>Send Get Well Wishes</h2>
+            <p>Brighten their recovery with beautiful florals, plants and gifts that will express your well wishes.</p>
+            <button class="btn btn-secondary rounded-pill btn-sm fw-bold">SHOP GET WELL FLOWERS & GIFTS</button>
+        </div>
+        <div class="col-md-6 getwell-flowers">
         </div>
     </div>
 </div>
