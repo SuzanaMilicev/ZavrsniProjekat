@@ -1,0 +1,7 @@
+.product-img {
+    max-width: 325px;
+}
+
+.product-img :hover {
+    cursor: pointer;
+}
