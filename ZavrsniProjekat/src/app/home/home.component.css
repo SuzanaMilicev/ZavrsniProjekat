@@ -1,5 +1,5 @@
 .header-img {
-    background-image: url(../../assets/home/FTD_SplitBanner_Merx_1.png);
+    background-image: url(/../../assets/home/flowerBackground1.jpg);
     background-size: cover;
     background-position: center;
     min-height: 550px;
@@ -26,7 +26,7 @@
 }
 
 .getwell-flowers {
-    background-image: url(../../assets/home/flowerBackground1.jpg);
+    background-image: url(/../../assets/home/FTD_SplitBanner_Merx_1.png);
     background-size: cover;
     background-position: center;
     min-height: 400px;

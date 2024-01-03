@@ -1,1 +1,10 @@
-<p>category works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mt-2 text-center product-img" *ngFor="let product of products"
+            (click)="selectProduct(product.id)">
+            <img [src]="product.imgSrc" class="img-fluid" alt="products flowers">
+            <h6 class="fw-bold mt-1">{{ product.name }}</h6>
+            <p>{{ product.price }}$</p>
+        </div>
+    </div>
+</div>

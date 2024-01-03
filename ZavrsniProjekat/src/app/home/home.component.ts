@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  flowers: {name: string, price: number, imgSrc: string, description: string}[] = [];
+  flowersHome: {name: string, price: number, imgSrc: string}[] = [];
 
   constructor(
     private flowersService : FlowersService,
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.flowers = this.flowersService.flowers;
+    this.flowersHome = this.flowersService.flowersHome;
   }
 
   loadShop() {

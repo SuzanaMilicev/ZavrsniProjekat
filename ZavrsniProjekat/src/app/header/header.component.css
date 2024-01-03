@@ -1,0 +1,5 @@
+.active-link {
+    --bs-nav-link-color: maroon;
+    --bs-nav-link-hover-color: maroon;
+    font-weight: bold;
+}
