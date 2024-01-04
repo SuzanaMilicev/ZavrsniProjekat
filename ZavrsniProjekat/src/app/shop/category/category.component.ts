@@ -30,7 +30,7 @@ export class CategoryComponent implements OnInit{
     this.products = this.flowersService.getProductsByCategory(catId);
   }
 
-  selectProduct(catId: number){
+  selectedProduct(catId: number){
     this.router.navigate(['/product', catId]);
   }
 }

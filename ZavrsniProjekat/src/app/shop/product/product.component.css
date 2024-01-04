@@ -1,0 +1,13 @@
+.product-description {
+    padding-top: 50px;
+    min-height: 86vh;
+    max-width: 800px;
+}
+
+.product-image {
+    max-width: 275px;
+}
+
+.flower-input {
+    width: 100px;
+}
