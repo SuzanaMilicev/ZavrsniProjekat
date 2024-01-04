@@ -1,1 +1,27 @@
-<p>product works!</p>
+<div class="container product-description mt-5">
+    <div class="row">
+        <p class="col-12 col-md-6">Home/Shop/{{currentCat}}/{{ selectedProduct.name }}</p>
+        <div class="col-12 col-md-6 text-end d-inline mb-4">
+            <button class="btn btn-light" (click)="previousProduct()"> &lt; Prev</button> |
+            <button class="btn btn-light" (click)="nextProduct()">Next &gt; </button>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-12 text-center">
+                <img [src]="selectedProduct.imgSrc" class="img-fluid me-2 mb-3 product-image" alt="product flowers">
+            </div>
+            <div class="col-lg-6 col-12">
+                <h4>{{selectedProduct.name}}</h4>
+                <p class="fw-bold">{{selectedProduct.price}}$</p>
+                <p>{{selectedProduct.description}}</p>
+                <hr>
+                <form>
+                    <label for="quantity" class="form-label">Quantity:</label>
+                    <input type="number" class="form-control border rounded-0 mb-3 flower-input" id="quantity" min="1" max="100">
+                    <button type="submit" class="btn btn-dark mb-4">Add To Cart</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
