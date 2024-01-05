@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/Product';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlowersService } from '../../services/flowers.service';
-import { ProductCategory } from '../../models/ProductCategory';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product',
@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private flowersService: FlowersService,
+    public cartService: ShoppingCartService,
     private router: Router,
   ) { }
 
@@ -41,6 +42,11 @@ export class ProductComponent implements OnInit {
 
   previousProduct() {
     this.selectedProduct = this.flowersService.getPrevProduct(this.selectedProduct.id);
+  }
+
+  addToCart(product: Product, quantity : string) {
+    this.cartService.addToCart(product, quantity);
+    window.alert('Your product has been added to the cart!');
   }
 
 }

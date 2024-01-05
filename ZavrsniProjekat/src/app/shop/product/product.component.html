@@ -13,7 +13,8 @@
             <ng-template [ngIf]="selectedProduct.catId==4">
                 <span>Get Well</span>
             </ng-template>
-            / {{ selectedProduct.name }}</p>
+            / {{ selectedProduct.name }}
+        </p>
         <div class="col-12 col-md-4 text-end d-inline mb-4">
             <button class="btn btn-light" (click)="previousProduct()"> &lt; Prev</button> |
             <button class="btn btn-light" (click)="nextProduct()">Next &gt; </button>
@@ -30,8 +31,11 @@
                 <hr>
                 <form class="mx-3">
                     <label for="quantity" class="form-label">Quantity:</label>
-                    <input type="number" class="form-control border rounded-0 mb-3 flower-input" id="quantity" min="1" max="100">
-                    <button type="submit" class="btn btn-dark mb-4">Add To Cart</button>
+                    <input type="number" class="form-control border rounded-0 mb-3 flower-input" id="quantity" min="1"
+                        max="100" #quantity>
+                    <button type="button" class="btn btn-dark mb-4"
+                        (click)="addToCart(selectedProduct, quantity.value)">Add To
+                        Cart</button>
                 </form>
             </div>
         </div>
