@@ -1,0 +1,12 @@
+.not-found {
+    max-width: 800px;
+}
+
+.not-found-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.not-found-container {
+    min-height: 85vh;
+}

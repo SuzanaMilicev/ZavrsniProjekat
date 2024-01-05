@@ -12,8 +12,6 @@ import { ProductCategory } from '../../models/ProductCategory';
 export class ProductComponent implements OnInit {
 
   selectedProduct!: Product;
-  allCat!: ProductCategory[];
-  currentCat!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,16 +26,7 @@ export class ProductComponent implements OnInit {
         this.getProductById(params['id']);
       }
     )
-
-    // this.allCat = this.flowersService.getAllCategories();
-    // this.selectCategory(this.allCat[0].name)
   }
-
-  // selectCategory(catName: string){
-  //   return this.currentCat = catName;
-  // }
-
-
 
   getProductById(catId: number) {
     let temp = this.flowersService.getProductById(catId);
@@ -55,20 +44,3 @@ export class ProductComponent implements OnInit {
   }
 
 }
-
-// getProductCategory(catId: number) {
-//   let temp = this.flowerService.getProductById(catId);
-//   if (temp && temp.catId == 1) {
-//     this.tempCategory = "Sympathy";
-//   }
-//   else if (temp && temp.catId == 2) {
-//     this.tempCategory = "Anniversary";
-//   }
-//   else if (temp && temp.catId == 3) {
-//     this.tempCategory = "Congratulations";
-//   }
-//   else {
-//     this.tempCategory = "Get Well";
-//   }
-// }
-
