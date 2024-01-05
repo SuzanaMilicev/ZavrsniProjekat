@@ -12,6 +12,7 @@ import { ShopComponent } from './shop/shop.component';
 import { CategoryComponent } from './shop/category/category.component';
 import { ProductComponent } from './shop/product/product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [ FlowersService ],
   bootstrap: [AppComponent]
