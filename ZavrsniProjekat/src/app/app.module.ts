@@ -13,6 +13,7 @@ import { CategoryComponent } from './shop/category/category.component';
 import { ProductComponent } from './shop/product/product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [ FlowersService ],
+  providers: [ FlowersService, ShoppingCartService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
