@@ -14,6 +14,8 @@ import { ProductComponent } from './shop/product/product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { SnackBarService } from './services/snack-bar.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,10 @@ import { ShoppingCartService } from './services/shopping-cart.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
-  providers: [ FlowersService, ShoppingCartService ],
+  providers: [ FlowersService, ShoppingCartService, SnackBarService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
