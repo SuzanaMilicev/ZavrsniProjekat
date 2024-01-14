@@ -71,38 +71,39 @@
         </div>
 
         <div class="col-md-6 col-11">
-            <form class="row g-3">
-                <div class="col-md-6">
+            <form class="row g-3" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                <div class="form-group col-md-6">
                     <label for="inputName" class="form-label">Name</label>
-                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputName">
+                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputName" ngModel name="name">
                 </div>
-                <div class="col-md-6">
+                <div class="form-group col-md-6">
                     <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control border-bottom border-dark rounded-0" id="inputEmail">
+                    <input type="email" class="form-control border-bottom border-dark rounded-0" id="inputEmail" ngModel name="email">
                 </div>
-                <div class="col-12">
+                <div class="form-group col-12">
                     <label for="inputSubject" class="form-label">Subject</label>
-                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputSubject">
+                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputSubject" ngModel name="subject">
                 </div>
-                <div class="col-12">
+                <div class="form-group col-12">
                     <label for="inputMessage" class="form-label">Message</label>
                     <textarea class="form-control border-bottom border-dark rounded-0" id="inputMessage"
-                        rows="3"></textarea>
+                        rows="3" ngModel name="message"></textarea>
                 </div>
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-outline-secondary mb-4">SEND</button>
                 </div>
-            </form>
 
-            <form>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="inputNewsletter" class="form-label">Get our newsletter</label>
                         <input type="email" class="form-control border border-dark rounded-0" id="inputNewsletter"
-                            placeholder="Enter your e-mail here">
+                            placeholder="Enter your e-mail here" #newsletterMail="ngModel"
+                            ngModel name="newsletterMail" email>
+                            <span class="error-msg" *ngIf="!newsletterMail.valid && newsletterMail.touched">Email must be valid.</span>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-dark rounded-0 mb-3" id="subscribeButton">Subscribe Now</button>
+                        <button type="button" class="btn btn-dark rounded-0 mb-3" id="subscribeButton" 
+                        (click)="newsletter(newsletterMail)">Subscribe Now</button>
                     </div>
                 </div>
             </form>
