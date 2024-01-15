@@ -17,6 +17,10 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { SnackBarService } from './services/snack-bar.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductOrderComponent } from './product-order/product-order.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { FormsModule } from '@angular/forms';
     ShopComponent,
     CategoryComponent,
     ProductComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent,
+    SignupComponent,
+    ShoppingCartComponent,
+    ProductOrderComponent
   ],
   imports: [
     BrowserModule,
