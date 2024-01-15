@@ -1,0 +1,32 @@
+.signup-background {
+    background-image: url(/../../assets/loginBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 630px;
+    max-width: 1000px;
+    margin-top: 60px;
+    padding-top: 100px;
+}
+
+input, button, label, a {
+    width: 250px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+.error-msg{
+    color: red;
+    font-size: 12px;
+}
+
+.text-style {
+    width: 250px;
+    text-align: left;
+}
+
+
