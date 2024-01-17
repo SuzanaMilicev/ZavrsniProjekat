@@ -8,7 +8,7 @@ import { SnackBarService } from './snack-bar.service';
 export class ShoppingCartService {
 
   products : Product[] = [];
-  quantity!: number;
+  quantity: number;
 
   constructor(
     private mySnackBar: SnackBarService,

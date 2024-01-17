@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { SnackBarService } from './services/snack-bar.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -43,7 +43,8 @@ import { ProductOrderComponent } from './product-order/product-order.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ FlowersService, ShoppingCartService, SnackBarService ],
   bootstrap: [AppComponent]

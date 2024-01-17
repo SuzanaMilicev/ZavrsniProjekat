@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ShopComponent implements OnInit{
 
-  allCat!: ProductCategory[];
-  currentCat!: number;
+  allCat: ProductCategory[];
+  currentCat: number;
 
   constructor(
     private flowersService: FlowersService,
