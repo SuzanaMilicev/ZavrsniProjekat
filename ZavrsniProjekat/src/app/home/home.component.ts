@@ -11,7 +11,7 @@ import { SnackBarService } from '../services/snack-bar.service';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild("contactForm") contactForm!: NgForm;
+  @ViewChild("contactForm") contactForm: NgForm;
   flowersHome: { name: string, price: number, imgSrc: string }[] = [];
 
   constructor(
@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/shop']);
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.contactForm.value);
     this.contactForm.reset();
     this.mySnackBar.openSnackBar("Thank you for your message! We will contact you as soon as possible.");
   }

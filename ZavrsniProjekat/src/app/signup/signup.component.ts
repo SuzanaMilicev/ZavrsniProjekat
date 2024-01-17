@@ -9,15 +9,15 @@ import { SnackBarService } from '../services/snack-bar.service';
 })
 export class SignupComponent {
   
-  @ViewChild("signUpForm") signUpForm!: NgForm;
+  @ViewChild("signUpForm") signUpForm: NgForm;
 
   constructor(
     private mySnackBar: SnackBarService
   ) {
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.signUpForm.value);
     this.signUpForm.reset();
     this.mySnackBar.openSnackBar("You are successfully signed up!");
   }
