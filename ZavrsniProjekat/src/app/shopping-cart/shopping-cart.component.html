@@ -1,8 +1,52 @@
-<p>shopping-cart works!</p>
-<p>shopping-cart works!</p>
-<p>shopping-cart works!</p>
-<p>shopping-cart works!</p>
-<p>shopping-cart works!</p>
+<div class="container shopping-cart">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <!-- <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Position</th>
+                        <th>Team</th>
+                        <th>Salary</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead> -->
+                <tbody>
+                    <tr *ngFor="let product of cartProducts">
+                        <td><img [src]="product.imgSrc" class="img-fluid me-2 mb-3 product-image"
+                                alt="cart product flowers"></td>
+                        <td> {{product.name}} <br><br>
+                            <button type="button" class="btn btn-link removeBtn border"
+                                (click)="remove(product)">Remove</button>
+                        </td>
 
-<p>shopping-cart works!</p>
-<button class="btn btn-dark mb-5" (click)="checkout()">Checkout</button>
+                        <td>{{product.price}} <span>$</span></td>
+                        <td><input type="number" class="quantityInput" [value]="product.quantity"
+                                (change)="quantityChanged(product, quantity.value)" #quantity></td>
+                        <td></td>
+                        <!-- <td>{{ product.price * quantity.value }} </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            {{total}}
+        </div>
+        <!-- <div class="cart-product border-bottom" *ngFor="let product of cartProducts">
+                <img [src]="product.imgSrc" class="img-fluid me-2 mb-3 product-image" alt="cart product flowers">
+                <p>{{ product.name }}</p>
+                <p>{{ product.price}}</p>$
+                <input type="number" [value]="product.quantity">
+                <p></p> ovde price*quantity
+                moze sve ovo u ngIf else -- kao ako postoji product onda se prikazuje 
+                    let product of products, ako ne onda poruka your cart is empty
+                    quantity i product bi bilo dobro cuvati u jednom modelu podataka
+              </div> -->
+        <!-- </div> -->
+        <div>
+            <button class="btn btn-dark mb-5 float-end" (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>
