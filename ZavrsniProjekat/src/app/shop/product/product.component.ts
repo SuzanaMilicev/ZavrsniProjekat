@@ -3,6 +3,7 @@ import { Product } from '../../models/Product';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlowersService } from '../../services/flowers.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-product',
@@ -17,6 +18,7 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private flowersService: FlowersService,
     public cartService: ShoppingCartService,
+    private mySnackBar: SnackBarService,
     private router: Router,
   ) { }
 
@@ -44,8 +46,13 @@ export class ProductComponent implements OnInit {
     this.selectedProduct = this.flowersService.getPrevProduct(this.selectedProduct.id);
   }
 
-  addToCart(product: Product, quantity : string) {
+  onAddToCart(product: Product, quantity : string) {
+    if (+quantity <= 100 && +quantity >=1){
     this.cartService.addToCart(product, quantity);
+    }
+    else {
+      this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
+    }
   }
 
 }

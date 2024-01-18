@@ -1,0 +1,9 @@
+.header-img {
+    background-image: url(/../../assets/about_BANNER.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 550px;
+    margin-top: 75px;
+    padding-top: 100px;
+    color: white;
+}

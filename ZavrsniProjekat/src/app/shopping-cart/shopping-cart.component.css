@@ -1,0 +1,20 @@
+.shopping-cart {
+    margin-top: 100px;
+}
+
+.product-image {
+    max-width: 150px;
+}
+
+.removeBtn {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.quantityInput {
+    width: 50px;
+}
+
+.checkoutBtn {
+    width: 100px;
+}
