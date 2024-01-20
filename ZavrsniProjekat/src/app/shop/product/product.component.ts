@@ -46,9 +46,12 @@ export class ProductComponent implements OnInit {
     this.selectedProduct = this.flowersService.getPrevProduct(this.selectedProduct.id);
   }
 
-  onAddToCart(product: Product, quantity : string) {
-    if (+quantity <= 100 && +quantity >=1){
-    this.cartService.addToCart(product, quantity);
+  onAddToCart(product: Product, quantity: string) {
+    if (+quantity <= 100 && +quantity >= 1) {
+      this.cartService.addToCart(product, quantity);
+
+      let allCartProducts = this.cartService.getProducts();
+      this.cartService.changeProductNumber(allCartProducts.length);
     }
     else {
       this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");

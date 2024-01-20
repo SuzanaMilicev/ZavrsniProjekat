@@ -101,6 +101,11 @@ export class ShoppingCartComponent implements OnInit {
     let index = this.cartProducts.findIndex(x => x.id == product.id);
     this.cartProducts.splice(index, 1);
 
+    this.calculateSubTotal();
+    this.calculateTotal();
+
+    this.CartService.changeProductNumber(this.cartProducts.length);
+
     // delete from json dataBase
     // this.CartService.deleteProduct(product.id).subscribe({
     //   next: (data) => {

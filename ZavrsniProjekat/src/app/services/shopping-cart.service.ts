@@ -9,6 +9,8 @@ import { CartProduct } from '../models/CartProduct';
 })
 export class ShoppingCartService {
 
+  productsInCart: Subject<number> = new Subject<number>();
+
   cartProducts: CartProduct[] = [];
 
   addedProductId: number;
@@ -16,8 +18,6 @@ export class ShoppingCartService {
   addedProductName: string;
   addedProductPrice: number;
   addedProductQuantity: number;
-
-  // numberOfProducts: Subject<number>;
 
   constructor(
     private mySnackBar: SnackBarService,
@@ -33,11 +33,24 @@ export class ShoppingCartService {
       this.addedProductQuantity = +quantity
     );
 
-    this.cartProducts.push(addedProduct);
-    this.mySnackBar.openSnackBar("Your product has been added to the cart!");
+    let sameProduct = this.cartProducts.find(x => x.id === selectedProduct.id);
+
+    if (sameProduct) {
+      sameProduct.quantity += +quantity;
+      this.mySnackBar.openSnackBar("Your product has been successfully updated!");
+    }
+    else {
+      this.cartProducts.push(addedProduct);
+      this.mySnackBar.openSnackBar("Your product has been added to the cart!");
+    }
   }
 
   getProducts() {
     return this.cartProducts;
   }
+
+  changeProductNumber(productsInCart: number) {
+    this.productsInCart.next(productsInCart);
+  }
+
 }

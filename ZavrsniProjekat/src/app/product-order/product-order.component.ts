@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackBarService } from '../services/snack-bar.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-order',
@@ -13,9 +14,10 @@ export class ProductOrderComponent implements OnInit {
   checkoutForm: FormGroup;
 
   constructor(
-    private router : Router,
-    private mySnackBar : SnackBarService
-  ) {}
+    private router: Router,
+    private mySnackBar: SnackBarService,
+    private cartService: ShoppingCartService
+  ) { }
 
   ngOnInit(): void {
     this.checkoutForm = new FormGroup({
@@ -29,14 +31,14 @@ export class ProductOrderComponent implements OnInit {
     })
   }
 
-  onConfirm(){
-    if(this.checkoutForm.valid){
-      console.log(this.checkoutForm);
-      /*ocistiti sadrzaj korpe */
+  onConfirm() {
+    if (this.checkoutForm.valid) {
+      let allProducts = this.cartService.getProducts();
+      allProducts.length = 0;
       this.router.navigate(['/']);
       this.mySnackBar.openSnackBar("Your order has been successfully placed!");
     }
-    else{
+    else {
       this.checkoutForm.markAllAsTouched();
     }
   }

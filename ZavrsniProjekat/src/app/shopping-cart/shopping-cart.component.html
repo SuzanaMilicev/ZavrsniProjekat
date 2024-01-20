@@ -73,7 +73,7 @@
                 <div class="col-12 text-end">
                     <p>Subtotal: <span>{{subtotal}}<span>$</span></span> </p>
                     <p class="border-bottom mb-1" #shipping> Shipping:
-                        <span>
+                        <span class="mb-2">
                             <div class="d-inline" *ngIf="subtotal >= 100; else elseBlock">FREE</div>
                             <ng-template #elseBlock>100<span>$</span>
                             </ng-template>
