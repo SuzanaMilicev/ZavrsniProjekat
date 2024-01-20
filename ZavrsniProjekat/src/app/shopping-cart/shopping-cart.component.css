@@ -1,5 +1,6 @@
 .shopping-cart {
     margin-top: 100px;
+    min-height: 75vh;
 }
 
 .product-image {
@@ -17,4 +18,5 @@
 
 .checkoutBtn {
     width: 100px;
+    margin-bottom: 100px !important;
 }

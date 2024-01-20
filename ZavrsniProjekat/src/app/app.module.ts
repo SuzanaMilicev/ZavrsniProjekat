@@ -22,6 +22,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductOrderComponent } from './product-order/product-order.component';
 import { AboutComponent } from './about/about.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AboutComponent } from './about/about.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [ FlowersService, ShoppingCartService, SnackBarService ],
   bootstrap: [AppComponent]
