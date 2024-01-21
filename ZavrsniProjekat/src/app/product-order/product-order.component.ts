@@ -35,6 +35,7 @@ export class ProductOrderComponent implements OnInit {
     if (this.checkoutForm.valid) {
       let allProducts = this.cartService.getProducts();
       allProducts.length = 0;
+      this.cartService.changeProductNumber(allProducts.length);
       this.router.navigate(['/']);
       this.mySnackBar.openSnackBar("Your order has been successfully placed!");
     }
