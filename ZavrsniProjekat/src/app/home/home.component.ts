@@ -34,10 +34,9 @@ export class HomeComponent implements OnInit {
     this.mySnackBar.openSnackBar("Thank you for your message! We will contact you as soon as possible.");
   }
 
-  newsletter(newsletterValue: 
-    {reset(): unknown; valid: any;}) {
+  newsletter(newsletterValue : any) {
     if (newsletterValue.valid) {
-      console.log(newsletterValue);
+      console.log(newsletterValue.value);
       newsletterValue.reset();
       this.mySnackBar.openSnackBar("Thank you for subscribing to our newsletter!");
     }
