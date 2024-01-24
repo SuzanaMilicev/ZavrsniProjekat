@@ -1,18 +1,3 @@
 {
-  "cartProducts": [
-    {
-      "id": 2,
-      "imgSrc": "assets/products/simpathy/product2.PNG",
-      "name": "The Spathiphyllum Plant",
-      "price": 80,
-      "quantity": 3
-    },
-    {
-      "id": 4,
-      "imgSrc": "assets/products/simpathy/product4.PNG",
-      "name": "Eternal Friendship Bouquet",
-      "price": 100,
-      "quantity": 5
-    }
-  ]
+  "cartProducts": []
 }

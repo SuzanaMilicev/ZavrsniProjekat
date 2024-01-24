@@ -7,60 +7,68 @@
             <form class="mt-2" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
                 <div class="form-group text-style">
                     <label for="nameSignUp">First name</label>
-                    <input type="text" id="nameSignUp" class="form-control form-control-sm" ngModel name="nameSignUp" required
-                        #nameSignUp="ngModel">
-                    <span class="error-msg"
-                        *ngIf="!signUpForm.controls['nameSignUp'].valid && signUpForm.controls['nameSignUp'].touched">
-                        First name must contain at least 5 characters.
-                    </span><br>
-                    <span class="error-msg"
-                        *ngIf="signUpForm.controls['nameSignUp'].errors?.['required'] && nameSignUp.touched">
-                        First name is required.
-                    </span>
+                    <input type="text" id="nameSignUp" class="form-control form-control-sm" ngModel name="nameSignUp"
+                        required #nameSignUp="ngModel">
+                    <div *ngIf="nameSignUp">
+                        <span class="error-msg" *ngIf="!nameSignUp.valid && nameSignUp.touched">
+                            First name must contain at least 5 characters.
+                        </span><br>
+                        <span class="error-msg"
+                            *ngIf="signUpForm && signUpForm.controls['nameSignUp'].errors?.['required'] && nameSignUp.touched">
+                            First name is required.
+                        </span>
+                    </div>
                 </div>
 
                 <div class="form-group text-style">
                     <label for="surnameSignUp">Last name</label>
-                    <input type="text" id="surnameSignUp" class="form-control form-control-sm" ngModel name="surnameSignUp" required
-                        #surnameSignUp="ngModel">
-                    <span class="error-msg"
-                        *ngIf="!signUpForm.controls['surnameSignUp'].valid && signUpForm.controls['surnameSignUp'].touched">
-                        Last name must contain at least 5 characters.
-                    </span><br>
-                    <span class="error-msg"
-                        *ngIf="signUpForm.controls['surnameSignUp'].errors?.['required'] && surnameSignUp.touched">
-                        Last name is required.
-                    </span>
+                    <input type="text" id="surnameSignUp" class="form-control form-control-sm" ngModel
+                        name="surnameSignUp" required #surnameSignUp="ngModel">
+                    <div *ngIf="signUpForm">
+                        <span class="error-msg"
+                            *ngIf="signUpForm && !signUpForm.controls['surnameSignUp'].valid && signUpForm.controls['surnameSignUp'].touched">
+                            Last name must contain at least 5 characters.
+                        </span><br>
+                        <span class="error-msg"
+                            *ngIf="signUpForm.controls['surnameSignUp'].errors?.['required'] && surnameSignUp.touched">
+                            Last name is required.
+                        </span>
+                    </div>
                 </div>
 
                 <div class="form-group text-style">
                     <label for="signUpEmail">E-mail</label>
-                    <input type="email" id="signUpEmail" class="form-control form-control-sm" ngModel name="signUpEmail" required email
-                        #signUpEmail="ngModel">
+                    <input type="email" id="signUpEmail" class="form-control form-control-sm" ngModel name="signUpEmail"
+                        required email #signUpEmail="ngModel">
                     <span class="error-msg" *ngIf="!signUpEmail.valid && signUpEmail.touched">E-mail must be
                         valid.</span><br>
-                    <span class="error-msg"
-                        *ngIf="signUpForm.controls['signUpEmail'].errors?.['required'] && signUpEmail.touched">
-                        E-mail is required.
-                    </span>
+                    <div *ngIf="signUpForm">
+                        <span class="error-msg"
+                            *ngIf="signUpForm && signUpForm.controls['signUpEmail'].errors?.['required'] && signUpEmail.touched">
+                            E-mail is required.
+                        </span>
+                    </div>
                 </div>
 
                 <div class="form-group text-style">
                     <label for="signUpPassword">Password</label>
-                    <input type="password" id="signUpPassword" class="form-control form-control-sm" ngModel name="signUpPassword" required
-                        minlength="5">
-                    <span class="error-msg"
-                        *ngIf="!signUpForm.controls['signUpPassword'].valid && signUpForm.controls['signUpPassword'].touched">
-                        Password must contain at least 5 characters.
-                    </span><br>
-                    <span class="error-msg"
-                        *ngIf="signUpForm.controls['signUpPassword'].errors?.['required'] && signUpForm.controls['signUpPassword'].touched">
-                        Password is required.
-                    </span>
+                    <input type="password" id="signUpPassword" class="form-control form-control-sm" ngModel
+                        name="signUpPassword" required minlength="5">
+                    <div *ngIf="signUpForm">
+                        <span class="error-msg"
+                            *ngIf="signUpForm && !signUpForm.controls['signUpPassword'].valid && signUpForm.controls['signUpPassword'].touched">
+                            Password must contain at least 5 characters.
+                        </span><br>
+                        <span class="error-msg"
+                            *ngIf="signUpForm.controls['signUpPassword'].errors?.['required'] && signUpForm.controls['signUpPassword'].touched">
+                            Password is required.
+                        </span>
+                    </div>
                 </div>
                 <div class="text-style">
                     <a class="text-dark text-decoration-none" href="#">Forgot password?</a> <br>
-                    <button class="btn btn-outline-secondary form-control-sm" type="submit" [disabled]="!signUpForm.valid">Sign Up</button>
+                    <button class="btn btn-outline-secondary form-control-sm" type="submit"
+                        [disabled]="!signUpForm.valid">Sign Up</button>
                 </div>
                 <p><small>Already a member? <span><a class="text-dark" routerLink="/login">Log in</a></span></small></p>
             </form>
