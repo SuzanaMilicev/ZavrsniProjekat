@@ -10,12 +10,15 @@
                     <label for="logInEmail">E-mail</label>
                     <input type="email" id="logInEmail" class="form-control" ngModel name="logInEmail" required email
                         #logInEmail="ngModel">
-                    <div *ngIf="logInEmail">
-                        <span class="error-msg" *ngIf="!logInEmail.valid && logInEmail.touched">E-mail must be
-                            valid.</span><br>
+                    <div *ngIf="logInForm && logInEmail">
                         <span class="error-msg"
-                            *ngIf="logInForm.controls['logInEmail'].errors?.['required'] && logInEmail.touched">
-                            E-mail is required.
+                            *ngIf="!logInForm.controls['logInEmail'].valid && logInForm.controls['logInEmail'].touched">
+                            <span *ngIf="logInForm.controls['logInEmail'].errors?.['required']">
+                                E-mail is required.
+                            </span>
+                            <span *ngIf="logInForm.controls['logInEmail'].errors?.['email']">
+                                E-mail must be valid.
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -27,15 +30,17 @@
                     <div *ngIf="logInForm">
                         <span class="error-msg"
                             *ngIf="!logInForm.controls['logInPassword'].valid && logInForm.controls['logInPassword'].touched">
-                            Password must contain at least 5 characters.
-                        </span><br>
-                        <span class="error-msg"
-                            *ngIf="logInForm.controls['logInPassword'].errors?.['required'] && logInForm.controls['logInPassword'].touched">
-                            Password is required.
+                            <span *ngIf="logInForm.controls['logInPassword'].errors?.['required']">
+                                Password is required.
+                            </span>
+                            <span *ngIf="logInForm.controls['logInPassword'].errors?.['minlength']">
+                                Password must contain at least 5 characters.
+                            </span>
                         </span>
                     </div>
                 </div>
-                <div class="text-style">
+
+                <div class="text-style mt-3">
                     <a class="text-dark text-decoration-none" href="#">Forgot password?</a> <br>
                     <button class="btn btn-outline-secondary mt-2" type="submit" [disabled]="!logInForm.valid">Log
                         in</button>
