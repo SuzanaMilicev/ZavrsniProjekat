@@ -22,8 +22,12 @@ export class ShoppingCartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cartProducts = this.CartService.getProducts();
-    this.calculateSubTotal();
+    this.CartService.getProducts().subscribe({
+      next: (data) => {
+        this.cartProducts = data as CartProduct[];
+        this.calculateSubTotal();
+      }
+    })
   }
 
   calculateSubTotal(): number {
@@ -39,6 +43,14 @@ export class ShoppingCartComponent implements OnInit {
       this.cartProducts.forEach(prod => {
         if (prod.id == product.id) {
           product.quantity = +newQuantity;
+          this.CartService.editCartProduct(product).subscribe({
+            next: (data) => {
+              product = data as CartProduct;
+            },
+            error: (err) => {
+              console.log(err.message);
+            }
+          })
           this.calculateSubTotal();
         }
         else {
@@ -54,22 +66,16 @@ export class ShoppingCartComponent implements OnInit {
 
   remove(product: CartProduct) {
     let index = this.cartProducts.findIndex(x => x.id == product.id);
-    this.cartProducts.splice(index, 1);
-
-    this.calculateSubTotal();
-
-    this.CartService.changeProductNumber(this.cartProducts.length);
-
-    // delete from json dataBase
-    // this.CartService.deleteProduct(product.id).subscribe({
-    //   next: (data) => {
-    //     this.cartProducts.splice(index, 1);
-    //     this.calculateTotal();
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   }
-    // })
+    this.CartService.deleteCartProduct(product.id).subscribe({
+      next: (data) => {
+        this.cartProducts.splice(index, 1);
+        this.calculateSubTotal();
+        this.CartService.changeProductNumber(this.cartProducts.length);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   checkout() {

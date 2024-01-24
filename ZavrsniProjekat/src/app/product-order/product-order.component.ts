@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackBarService } from '../services/snack-bar.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
+import { CartProduct } from '../models/CartProduct';
 
 @Component({
   selector: 'app-product-order',
@@ -10,6 +11,8 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
   styleUrl: './product-order.component.css'
 })
 export class ProductOrderComponent implements OnInit {
+
+  allCartProducts: CartProduct[] = [];
 
   checkoutForm: FormGroup;
 
@@ -29,13 +32,27 @@ export class ProductOrderComponent implements OnInit {
       "comment": new FormControl(""),
       "payment": new FormControl("Credit Card", Validators.required)
     })
+
+    this.cartService.getProducts().subscribe({
+      next: (data) => {
+        this.allCartProducts = data as CartProduct[];
+      }
+    })
   }
 
   onConfirm() {
     if (this.checkoutForm.valid) {
-      let allProducts = this.cartService.getProducts();
-      allProducts.length = 0;
-      this.cartService.changeProductNumber(allProducts.length);
+      this.allCartProducts.forEach(product => {
+        this.cartService.deleteCartProduct(product.id).subscribe({
+          next: (data) => {
+            this.allCartProducts.splice(product.id, 1);
+            this.cartService.changeProductNumber(this.allCartProducts.length);
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        })
+      });
       this.router.navigate(['/']);
       this.mySnackBar.openSnackBar("Your order has been successfully placed!");
     }

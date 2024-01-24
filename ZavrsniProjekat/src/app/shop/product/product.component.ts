@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlowersService } from '../../services/flowers.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { CartProduct } from '../../models/CartProduct';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +12,8 @@ import { SnackBarService } from '../../services/snack-bar.service';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
+
+  allCartProducts: CartProduct[] = [];
 
   selectedProduct: Product;
 
@@ -29,6 +32,12 @@ export class ProductComponent implements OnInit {
         this.getProductById(params['id']);
       }
     )
+
+    this.cartService.getProducts().subscribe({
+      next: (data) => {
+        this.allCartProducts = data as CartProduct[];
+      }
+    })
   }
 
   getProductById(catId: number) {
@@ -49,9 +58,7 @@ export class ProductComponent implements OnInit {
   onAddToCart(product: Product, quantity: string) {
     if (+quantity <= 100 && +quantity >= 1) {
       this.cartService.addToCart(product, quantity);
-
-      let allCartProducts = this.cartService.getProducts();
-      this.cartService.changeProductNumber(allCartProducts.length);
+      this.cartService.changeProductNumber(this.allCartProducts.length);
     }
     else {
       this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
