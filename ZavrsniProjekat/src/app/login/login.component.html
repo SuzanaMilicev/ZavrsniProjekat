@@ -12,7 +12,7 @@
                         #logInEmail="ngModel">
                     <div *ngIf="logInForm && logInEmail">
                         <span class="error-msg"
-                            *ngIf="!logInForm.controls['logInEmail'].valid && logInForm.controls['logInEmail'].touched">
+                            *ngIf="!logInEmail?.valid && logInForm.controls['logInEmail'].touched">
                             <span *ngIf="logInForm.controls['logInEmail'].errors?.['required']">
                                 E-mail is required.
                             </span>
@@ -26,10 +26,10 @@
                 <div class="form-group text-style">
                     <label for="logInPassword">Password</label>
                     <input type="password" id="logInPassword" class="form-control" ngModel name="logInPassword" required
-                        minlength="5">
+                        minlength="5" #logInPassword="ngModel">
                     <div *ngIf="logInForm">
                         <span class="error-msg"
-                            *ngIf="!logInForm.controls['logInPassword'].valid && logInForm.controls['logInPassword'].touched">
+                            *ngIf="!logInPassword?.valid && logInForm.controls['logInPassword'].touched">
                             <span *ngIf="logInForm.controls['logInPassword'].errors?.['required']">
                                 Password is required.
                             </span>
