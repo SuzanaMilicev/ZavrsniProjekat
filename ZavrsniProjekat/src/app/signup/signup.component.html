@@ -4,14 +4,14 @@
 
             <h4>Sign Up</h4>
 
-            <form class="mt-3" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+            <form class="mt-3" (ngSubmit)="onSubmit(signUpEmail.value, signUpPassword.value)" #signUpForm="ngForm">
                 <div class="form-group text-style">
                     <label for="nameSignUp">First name</label>
                     <input type="text" id="nameSignUp" class="form-control form-control-sm" ngModel name="nameSignUp"
                         required #nameSignUp="ngModel" minlength="5">
                     <div *ngIf="signUpForm && nameSignUp">
                         <span class="error-msg"
-                            *ngIf="!signUpForm.controls['nameSignUp'].valid && signUpForm.controls['nameSignUp'].touched">
+                            *ngIf="!nameSignUp?.valid && signUpForm.controls['nameSignUp'].touched">
                             <span *ngIf="signUpForm.controls['nameSignUp'].errors?.['required']">
                                 First name is required.
                             </span>
@@ -28,7 +28,7 @@
                         name="surnameSignUp" required #surnameSignUp="ngModel" minlength="5">
                     <div *ngIf="signUpForm">
                         <span class="error-msg"
-                            *ngIf="!signUpForm.controls['surnameSignUp'].valid && signUpForm.controls['surnameSignUp'].touched">
+                            *ngIf="!surnameSignUp?.valid && signUpForm.controls['surnameSignUp'].touched">
                             <span *ngIf="signUpForm.controls['surnameSignUp'].errors?.['required']">
                                 Last name is required.
                             </span>
@@ -45,7 +45,7 @@
                         required email #signUpEmail="ngModel">
                     <div *ngIf="signUpForm && signUpEmail">
                         <span class="error-msg"
-                            *ngIf="!signUpForm.controls['signUpEmail'].valid && signUpForm.controls['signUpEmail'].touched">
+                            *ngIf="!signUpEmail?.valid && signUpForm.controls['signUpEmail'].touched">
                             <span *ngIf="signUpForm.controls['signUpEmail'].errors?.['required']">
                                 E-mail is required.
                             </span>
@@ -59,10 +59,10 @@
                 <div class="form-group text-style">
                     <label for="signUpPassword">Password</label>
                     <input type="password" id="signUpPassword" class="form-control form-control-sm" ngModel
-                        name="signUpPassword" required minlength="5">
+                        name="signUpPassword" required minlength="5" #signUpPassword="ngModel">
                     <div *ngIf="signUpForm">
                         <span class="error-msg"
-                            *ngIf="!signUpForm.controls['signUpPassword'].valid && signUpForm.controls['signUpPassword'].touched">
+                            *ngIf="!signUpPassword?.valid && signUpForm.controls['signUpPassword'].touched">
                             <span *ngIf="signUpForm.controls['signUpPassword'].errors?.['required']">
                                 Password is required.
                             </span>

@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShoppingCartService implements OnInit {
 
-  productsInCart: Subject<number> = new Subject<number>();
+  numberOfProducts: Subject<number> = new Subject<number>();
 
   allCartProducts: CartProduct[] = []
 
@@ -42,60 +42,33 @@ export class ShoppingCartService implements OnInit {
       this.addedProductQuantity = +quantity
     );
 
-    let sameProduct = this.allCartProducts.find(x => x.id === selectedProduct.id);
+    let sameProduct = this.allCartProducts.find(x => x.id == selectedProduct.id);
 
     if (sameProduct) {
-      this.editCartProduct(addedProduct).subscribe({
+      sameProduct.quantity = +quantity;
+      this.editCartProduct(sameProduct).subscribe({
         next: (data) => {
-          addedProduct = data as CartProduct;
+          sameProduct = data as CartProduct;
+          this.calculateNumberOfProducts();
+          this.mySnackBar.openSnackBar("Your product has been successfully updated!");
         },
         error: (err) => {
           console.log(err.message);
         }
       })
-      this.mySnackBar.openSnackBar("Your product has been successfully updated!");
     }
     else {
       this.addNewCartProduct(addedProduct).subscribe({
         next: (data) => {
-          // this.productsInCart.next(this.allCartProducts.length);
-          this.changeProductNumber(this.allCartProducts.length);
+          this.calculateNumberOfProducts();
+          this.mySnackBar.openSnackBar("Your product has been added to the cart!");
         },
         error: (err) => {
           console.log(err.message);
         }
       })
-      this.mySnackBar.openSnackBar("Your product has been added to the cart!");
     }
 
-
-
-
-    // this.allCartProducts.forEach(prod => {
-    //   if (prod.id == selectedProduct.id) {
-    //     prod.quantity = this.addedProductQuantity;
-    //     this.editCartProduct(prod).subscribe({
-    //       next: (data) => {
-    //         prod = data as CartProduct;
-    //       },
-    //       error: (err) => {
-    //         console.log(err.message);
-    //       }
-    //     })
-    //     this.mySnackBar.openSnackBar("Your product has been successfully updated!");
-    //   }
-    //   else {
-    //     this.addNewCartProduct(addedProduct).subscribe({
-    //       next: (data) => {
-    //         this.changeProductNumber(this.allCartProducts.length);
-    //       },
-    //       error: (err) => {
-    //         console.log(err.message);
-    //       }
-    //     })
-    //     this.mySnackBar.openSnackBar("Your product has been added to the cart!");
-    //   }
-    // })
   }
 
   getProducts() {
@@ -114,8 +87,16 @@ export class ShoppingCartService implements OnInit {
     return this.httpClient.delete("http://localhost:3000/cartProducts/" + prodId);
   }
 
-  changeProductNumber(productsInCart: number) {
-    this.productsInCart.next(productsInCart);
+  calculateNumberOfProducts() {
+    this.httpClient.get("http://localhost:3000/cartProducts").subscribe({
+      next: (data: any) => {
+        let all = 0;
+        data.forEach((product: CartProduct) => {
+          all += product.quantity;
+        });
+        this.numberOfProducts.next(all);
+      }
+    })
   }
 
 }

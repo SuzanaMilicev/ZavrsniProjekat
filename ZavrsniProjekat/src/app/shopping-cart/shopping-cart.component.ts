@@ -46,6 +46,7 @@ export class ShoppingCartComponent implements OnInit {
           this.CartService.editCartProduct(product).subscribe({
             next: (data) => {
               product = data as CartProduct;
+              this.CartService.calculateNumberOfProducts();
             },
             error: (err) => {
               console.log(err.message);
@@ -70,7 +71,7 @@ export class ShoppingCartComponent implements OnInit {
       next: (data) => {
         this.cartProducts.splice(index, 1);
         this.calculateSubTotal();
-        this.CartService.changeProductNumber(this.cartProducts.length);
+        this.CartService.calculateNumberOfProducts();
       },
       error: (err) => {
         console.log(err);

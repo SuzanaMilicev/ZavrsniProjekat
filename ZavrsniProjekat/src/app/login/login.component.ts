@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SnackBarService } from '../services/snack-bar.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,14 @@ export class LoginComponent {
   @ViewChild("logInForm") logInForm: NgForm;
 
   constructor(
-    private mySnackBar: SnackBarService
+    private mySnackBar: SnackBarService,
+    private authService: AuthService
   ) {
   }
 
-  onSubmit() {
-    console.log(this.logInForm.value);
+  onSubmit(logInEmail: string, logInPassword: string) {
+    this.authService.signIn(logInEmail, logInPassword);
     this.logInForm.reset();
-    this.mySnackBar.openSnackBar("You are successfully logged in!");
+    // this.mySnackBar.openSnackBar("You are successfully logged in!");    => TU CE DA IDE POZIVANJE MODALA
   }
 }

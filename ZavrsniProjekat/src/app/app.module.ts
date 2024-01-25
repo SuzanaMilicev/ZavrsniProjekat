@@ -24,6 +24,13 @@ import { ProductOrderComponent } from './product-order/product-order.component';
 import { AboutComponent } from './about/about.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { firebaseConfig } from '../environment';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -50,9 +57,14 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [ FlowersService, ShoppingCartService, SnackBarService ],
+  providers: [ FlowersService, ShoppingCartService, SnackBarService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
