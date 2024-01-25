@@ -2,9 +2,11 @@
     <div class="row">
         <div class="col-lg-6 col-md-8 col-10">
             <form [formGroup]="checkoutForm" (ngSubmit)="onConfirm()">
+
                 <div class="form-group">
                     <div class="form-floating mb-1">
-                        <input type="text" class="form-control border-bottom" id="name" name="name" formControlName="name" placeholder="name">
+                        <input type="text" class="form-control border-bottom" id="name" name="name"
+                            formControlName="name" placeholder="name">
                         <label for="name">First name <span style="color: red;">*</span>:</label>
                         <span class="error-msg"
                             *ngIf="!checkoutForm.controls['name'].valid && checkoutForm.controls['name'].touched">
@@ -19,14 +21,15 @@
 
                 <div class="form-group">
                     <div class="form-floating mb-1">
-                        <input type="text" class="form-control border-bottom" id="surname" name="surname" formControlName="surname" placeholder="surname">
+                        <input type="text" class="form-control border-bottom" id="surname" name="surname"
+                            formControlName="surname" placeholder="surname">
                         <label for="surname">Last name <span style="color: red;">*</span>:</label>
                         <span class="error-msg"
                             *ngIf="!checkoutForm.controls['surname'].valid && checkoutForm.controls['surname'].touched">
                             Last name must contain at least 3 characters.
                         </span><br>
                         <span class="error-msg"
-                            *ngIf="!checkoutForm.controls['surname'].errors?.['required'] && checkoutForm.controls['surname'].touched">
+                            *ngIf="checkoutForm.controls['surname'].errors?.['required'] && checkoutForm.controls['surname'].touched">
                             Last name is required.
                         </span>
                     </div>
@@ -34,7 +37,8 @@
 
                 <div class="form-group">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control border-bottom" id="email" name="email" formControlName="email" placeholder="email">
+                        <input type="email" class="form-control border-bottom" id="email" name="email"
+                            formControlName="email" placeholder="email">
                         <label for="email">E-mail address <span style="color: red;">*</span>:</label>
                         <span class="error-msg"
                             *ngIf="!checkoutForm.controls['email'].valid && checkoutForm.controls['email'].touched">
@@ -50,7 +54,8 @@
 
                 <div class="form-group">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control border-bottom" id="phone" name="phone" formControlName="phone" placeholder="phone">
+                        <input type="number" class="form-control border-bottom" id="phone" name="phone"
+                            formControlName="phone" placeholder="phone">
                         <label for="phone">Phone number <span style="color: red;">*</span>:</label>
                         <span class="error-msg"
                             *ngIf="checkoutForm.controls['phone'].errors?.['required'] && checkoutForm.controls['phone'].touched">
@@ -61,7 +66,8 @@
 
                 <div class="form-group">
                     <div class="form-floating mb-1">
-                        <input type="text" class="form-control border-bottom" id="address" name="address" formControlName="address" placeholder="address">
+                        <input type="text" class="form-control border-bottom" id="address" name="address"
+                            formControlName="address" placeholder="address">
                         <label for="phone">Address <span style="color: red;">*</span>:</label>
                         <span class="error-msg"
                             *ngIf="!checkoutForm.controls['address'].valid && checkoutForm.controls['address'].touched">
@@ -76,7 +82,8 @@
 
                 <div class="form-group">
                     <div class="form-floating mb-4">
-                        <textarea class="form-control border-bottom" id="comment" name="comment" formControlName="comment" placeholder="comment">
+                        <textarea class="form-control border-bottom" id="comment" name="comment"
+                            formControlName="comment" placeholder="comment">
                         </textarea>
                         <label for="comment">Comment: </label>
                     </div>

@@ -36,6 +36,14 @@ export class ProductComponent implements OnInit {
     this.cartService.getProducts().subscribe({
       next: (data) => {
         this.allCartProducts = data as CartProduct[];
+        let all = 0;
+        this.allCartProducts.forEach((product: CartProduct) => {
+          all += product.quantity;
+        });
+        this.cartService.numberOfProducts.next(all);
+      },
+      error: (err) => {
+        console.log(err.message)
       }
     })
   }
@@ -58,7 +66,7 @@ export class ProductComponent implements OnInit {
   onAddToCart(product: Product, quantity: string) {
     if (+quantity <= 100 && +quantity >= 1) {
       this.cartService.addToCart(product, quantity);
-      this.cartService.changeProductNumber(this.allCartProducts.length);
+      this.cartService.calculateNumberOfProducts();
     }
     else {
       this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");

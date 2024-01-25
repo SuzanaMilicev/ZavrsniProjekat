@@ -46,7 +46,7 @@ export class ProductOrderComponent implements OnInit {
         this.cartService.deleteCartProduct(product.id).subscribe({
           next: (data) => {
             this.allCartProducts.splice(product.id, 1);
-            this.cartService.changeProductNumber(this.allCartProducts.length);
+            this.cartService.calculateNumberOfProducts();
           },
           error: (err) => {
             console.log(err);

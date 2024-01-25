@@ -5,7 +5,7 @@
             <h3>Log In</h3>
             <p><small>New to this site? <span><a class="text-dark" routerLink="/signup">Sign up</a></span></small></p>
 
-            <form class="mt-5" (ngSubmit)="onSubmit()" #logInForm="ngForm">
+            <form class="mt-5" (ngSubmit)="onSubmit(logInEmail.value, logInPassword.value)" #logInForm="ngForm">
                 <div class="form-group text-style">
                     <label for="logInEmail">E-mail</label>
                     <input type="email" id="logInEmail" class="form-control" ngModel name="logInEmail" required email

@@ -9,7 +9,7 @@ import { CartProduct } from '../models/CartProduct';
 })
 export class HeaderComponent {
 
-  prodNumber = 0;
+  prodNumber : number = 0;
   allCartProducts: CartProduct[] = [];
 
   constructor(
@@ -20,22 +20,12 @@ export class HeaderComponent {
     this.CartService.getProducts().subscribe({
       next: (data) => {
         this.allCartProducts = data as CartProduct[];
+        this.CartService.calculateNumberOfProducts();
       }
     })
 
-    this.CartService.productsInCart.subscribe({
-      next: (data: number) => {
-        if (this.allCartProducts.length >= 1) {
-          this.prodNumber = this.allCartProducts.length;
-          // this.CartService.changeProductNumber(this.prodNumber);
-        }
-        else if (this.allCartProducts.length == 0) {
-          this.prodNumber = 0;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+    this.CartService.numberOfProducts.subscribe((res: number) => {
+      this.prodNumber = res;
+    })
   }
 }
