@@ -8,7 +8,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   if(!authService.isLoggedIn) {
     router.navigate(['login']);
-    // moze snackbar you dont have permission for this page, please log in
+    alert("You do not have permission for this page.")
     return false;
   }
   else {

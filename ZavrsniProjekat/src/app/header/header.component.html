@@ -25,11 +25,11 @@
             </ul>
         </div>
 
-        
+
         <div class="d-flex align-items-center">
             <div class="dropdown me-3">
-                <a class="dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                <a class="dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user-circle-o text-dark icon" aria-hidden="true"></i>
                 </a>
 
@@ -43,11 +43,12 @@
             <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link me-3" routerLink="/login">Login</a>
             </div>
-
-            <a class="link-secondary me-3" routerLink="/shopping-cart">
-                <i class="fa fa-shopping-cart text-dark icon" aria-hidden="true"></i>
-                <span class="badge rounded-pill badge-notification bg-secondary">{{prodNumber}}</span>
-            </a>
+            <ng-template [ngIf]="authService.isLoggedIn">
+                <a class="link-secondary me-3" routerLink="/shopping-cart">
+                    <i class="fa fa-shopping-cart text-dark icon" aria-hidden="true"></i>
+                    <span class="badge rounded-pill badge-notification bg-secondary">{{prodNumber}}</span>
+                </a>
+            </ng-template>
         </div>
     </div>
 </nav>

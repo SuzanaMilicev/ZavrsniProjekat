@@ -1,18 +1,3 @@
 {
-  "cartProducts": [
-    {
-      "id": 1,
-      "imgSrc": "assets/products/simpathy/product1.PNG",
-      "name": "Beautiful Spirit Basket",
-      "price": 105,
-      "quantity": 1
-    },
-    {
-      "id": 2,
-      "imgSrc": "assets/products/simpathy/product2.PNG",
-      "name": "The Spathiphyllum Plant",
-      "price": 80,
-      "quantity": 9
-    }
-  ]
+  "cartProducts": []
 }

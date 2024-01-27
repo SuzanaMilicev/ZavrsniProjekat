@@ -4,6 +4,7 @@ import { SnackBarService } from './snack-bar.service';
 import { Subject } from 'rxjs';
 import { CartProduct } from '../models/CartProduct';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class ShoppingCartService implements OnInit {
 
   constructor(
     private mySnackBar: SnackBarService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private authService : AuthService
   ) { }
 
   ngOnInit(): void {
@@ -99,4 +101,8 @@ export class ShoppingCartService implements OnInit {
     })
   }
 
+  getAuthData(){
+    const token = this.authService.getToken();
+    return this.httpClient.get('https://zavrsniprojekatsuzana-default-rtdb.firebaseio.com/data.json?auth='+token)
+  }
 }

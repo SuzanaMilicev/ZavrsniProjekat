@@ -26,7 +26,7 @@
                 <div class="form-group text-style">
                     <label for="logInPassword">Password</label>
                     <input type="password" id="logInPassword" class="form-control" ngModel name="logInPassword" required
-                        minlength="5" #logInPassword="ngModel">
+                        minlength="8" #logInPassword="ngModel">
                     <div *ngIf="logInForm">
                         <span class="error-msg"
                             *ngIf="!logInPassword?.valid && logInForm.controls['logInPassword'].touched">
@@ -34,7 +34,7 @@
                                 Password is required.
                             </span>
                             <span *ngIf="logInForm.controls['logInPassword'].errors?.['minlength']">
-                                Password must contain at least 5 characters.
+                                Password must contain at least 8 characters.
                             </span>
                         </span>
                     </div>

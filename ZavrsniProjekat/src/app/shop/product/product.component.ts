@@ -5,6 +5,9 @@ import { FlowersService } from '../../services/flowers.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { CartProduct } from '../../models/CartProduct';
+import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogComponent } from '../../mat-dialog/mat-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -23,6 +26,8 @@ export class ProductComponent implements OnInit {
     public cartService: ShoppingCartService,
     private mySnackBar: SnackBarService,
     private router: Router,
+    private authService : AuthService,
+    private logInDialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -64,12 +69,17 @@ export class ProductComponent implements OnInit {
   }
 
   onAddToCart(product: Product, quantity: string) {
-    if (+quantity <= 100 && +quantity >= 1) {
-      this.cartService.addToCart(product, quantity);
-      this.cartService.calculateNumberOfProducts();
+    if (this.authService.isLoggedIn == true) {
+      if (+quantity <= 100 && +quantity >= 1) {
+        this.cartService.addToCart(product, quantity);
+        this.cartService.calculateNumberOfProducts();
+      }
+      else {
+        this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
+      }
     }
     else {
-      this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
+      this.logInDialog.open(MatDialogComponent);
     }
   }
 

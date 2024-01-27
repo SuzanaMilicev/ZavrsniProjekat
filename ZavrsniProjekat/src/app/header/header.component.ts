@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { CartProduct } from '../models/CartProduct';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent {
   allCartProducts: CartProduct[] = [];
 
   constructor(
-    private CartService: ShoppingCartService
+    private CartService: ShoppingCartService,
+    public authService : AuthService
   ) { }
 
   ngOnInit(): void {
