@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { sendEmailVerification } from "firebase/auth";
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
     private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth,
     public router: Router,
+    private mySnackBar : SnackBarService
   ) {
     this.angularFireAuth.authState.subscribe((user: any) => {
       if (user) {
@@ -25,7 +27,7 @@ export class AuthService {
         }
       }
       else {
-        //za logg out
+        //za log out, da li treba?
         if (localStorage) {
           localStorage.setItem('user', 'null');
         }
@@ -38,12 +40,10 @@ export class AuthService {
       .then((result) => {
         console.log(result);
         this.setUserData(result.user);
-        //navigate'
         if (localStorage) {
           localStorage.setItem('user', JSON.stringify(result.user));
         }
-        // debugger;
-        this.router.navigate(['/']);
+        this.mySnackBar.openSnackBar("Thank you for signing in! Enjoy shopping.");
       })
       .catch((error) => {
         alert(error.message);
@@ -56,7 +56,6 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      displaySurname: user.displaySurname,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
@@ -72,6 +71,7 @@ export class AuthService {
           localStorage.removeItem('user');
         }
         this.router.navigate(['sign-in']);
+        this.mySnackBar.openSnackBar("You have successfully signed out.");
       })
   }
 
@@ -90,7 +90,7 @@ export class AuthService {
     if (currentUser) {
       sendEmailVerification(currentUser)
         .then(() => {
-          this.router.navigate(['thanks-for-registering'])
+          this.router.navigate(['login'])
         })
     }
   }

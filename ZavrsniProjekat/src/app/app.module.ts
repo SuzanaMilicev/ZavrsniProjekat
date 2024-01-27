@@ -31,6 +31,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { firebaseConfig } from '../environment';
 import { AuthService } from './services/auth.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
+import { MatRegisteredDialogComponent } from './mat-dialog/mat-registered-dialog/mat-registered-dialog/mat-registered-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { AuthService } from './services/auth.service';
     SignupComponent,
     ShoppingCartComponent,
     ProductOrderComponent,
-    AboutComponent
+    AboutComponent,
+    MatDialogComponent,
+    MatRegisteredDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +68,7 @@ import { AuthService } from './services/auth.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    MatDialogModule
   ],
   providers: [ FlowersService, ShoppingCartService, SnackBarService, AuthService ],
   bootstrap: [AppComponent]

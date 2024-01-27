@@ -4,6 +4,7 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 import { CartProduct } from '../models/CartProduct';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from '../services/snack-bar.service';
+import { MyUser } from '../models/My User';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,6 +12,8 @@ import { SnackBarService } from '../services/snack-bar.service';
   styleUrl: './shopping-cart.component.css'
 })
 export class ShoppingCartComponent implements OnInit {
+
+  data : string[] = [];
 
   cartProducts: CartProduct[] = [];
   subtotal = 0;
@@ -26,6 +29,15 @@ export class ShoppingCartComponent implements OnInit {
       next: (data) => {
         this.cartProducts = data as CartProduct[];
         this.calculateSubTotal();
+      }
+    })
+
+    this.CartService.getAuthData().subscribe({
+      next: (data: any) => {
+        this.data = data;
+      },
+      error : (err) => {
+        alert(err.message);
       }
     })
   }
