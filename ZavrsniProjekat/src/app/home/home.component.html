@@ -4,7 +4,7 @@
         <div class="col-12 header-img text-end pe-5">
             <h1>March into spring!</h1>
             <p class="pt-1">Bring the meadow to them with a daisy bouquet.</p>
-            <button class="btn btn-secondary">SHOP FLOWERS</button>
+            <button class="btn btn-secondary" routerLink="/shop">SHOP FLOWERS</button>
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
 </div>
 
 <!-- FORM & INFO  -->
-<div class="container text-start">
+<div class="container text-start my-5" id="contact">
     <div class="row">
         <div class="col-md-3 col-11">
             <p>Send us a message <br>
@@ -74,36 +74,45 @@
             <form class="row g-3" (ngSubmit)="onSubmit()" #contactForm="ngForm">
                 <div class="form-group col-md-6">
                     <label for="inputName" class="form-label">Name</label>
-                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputName" ngModel name="name">
+                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputName" ngModel
+                        name="name">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control border-bottom border-dark rounded-0" id="inputEmail" ngModel name="email">
+                    <input type="email" class="form-control border-bottom border-dark rounded-0" id="inputEmail"
+                        #inputEmail="ngModel" ngModel name="email" required>
+                    <span class="error-msg" *ngIf="!inputEmail.valid && inputEmail.touched"><small>E-mail field must be
+                            valid and filled out.</small></span>
                 </div>
                 <div class="form-group col-12">
                     <label for="inputSubject" class="form-label">Subject</label>
-                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputSubject" ngModel name="subject">
+                    <input type="text" class="form-control border-bottom border-dark rounded-0" id="inputSubject"
+                        ngModel name="subject">
                 </div>
                 <div class="form-group col-12">
                     <label for="inputMessage" class="form-label">Message</label>
-                    <textarea class="form-control border-bottom border-dark rounded-0" id="inputMessage"
-                        rows="3" ngModel name="message"></textarea>
+                    <textarea class="form-control border-bottom border-dark rounded-0" id="inputMessage" rows="3"
+                        ngModel name="message" minlength="5" #inputMessage="ngModel" required></textarea>
+                    <span class="error-msg" *ngIf="!inputMessage.valid && inputMessage.touched"><small>Message field
+                            must be filled out.</small></span>
                 </div>
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-outline-secondary mb-4">SEND</button>
                 </div>
-
+            </form>
+            <form #newsletterform="ngForm">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="inputNewsletter" class="form-label">Get our newsletter</label>
                         <input type="email" class="form-control border border-dark rounded-0" id="inputNewsletter"
-                            placeholder="Enter your e-mail here" #newsletterMail="ngModel"
-                            ngModel name="newsletterMail" email>
-                            <span class="error-msg" *ngIf="!newsletterMail.valid && newsletterMail.touched">E-mail must be valid.</span>
+                            placeholder="Enter your e-mail here" #newsletterMail="ngModel" ngModel name="newsletterMail"
+                            email required>
+                        <span class="error-msg" *ngIf="!newsletterMail.valid && newsletterMail.touched"><small>E-mail
+                                must be valid.</small></span>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-dark rounded-0 mb-3" id="subscribeButton" 
-                        (click)="newsletter(newsletterMail)">Subscribe Now</button>
+                        <button type="button" class="btn btn-dark rounded-0 mb-3" id="subscribeButton"
+                            (click)="newsletter(newsletterMail)">Subscribe Now</button>
                     </div>
                 </div>
             </form>
@@ -117,7 +126,7 @@
         <div class="col-md-6 text-center text-light getwell-pink">
             <h2>Send Get Well Wishes</h2>
             <p>Brighten their recovery with beautiful florals, plants and gifts that will express your well wishes.</p>
-            <button class="btn btn-secondary rounded-pill btn-sm fw-bold">SHOP GET WELL FLOWERS & GIFTS</button>
+            <button class="btn btn-secondary rounded-pill btn-sm fw-bold" routerLink="/shop">SHOP GET WELL FLOWERS & GIFTS</button>
         </div>
         <div class="col-md-6 getwell-flowers">
         </div>

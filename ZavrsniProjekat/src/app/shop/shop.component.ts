@@ -31,5 +31,4 @@ export class ShopComponent implements OnInit{
     this.currentCat = catId;
     this.router.navigate(['/shop', catId]);
   }
-
 }
