@@ -29,12 +29,17 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.contactForm.valid) {
     console.log(this.contactForm.value);
     this.contactForm.reset();
     this.mySnackBar.openSnackBar("Thank you for your message! We will contact you as soon as possible.");
+    }
+    else {
+      this.mySnackBar.openSnackBar("Message and e-mail fields are required!");
+    }
   }
 
-  newsletter(newsletterValue : any) {
+  newsletter(newsletterValue: any) {
     if (newsletterValue.valid) {
       console.log(newsletterValue.value);
       newsletterValue.reset();

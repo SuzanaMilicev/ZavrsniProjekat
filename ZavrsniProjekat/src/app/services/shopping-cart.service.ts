@@ -36,41 +36,30 @@ export class ShoppingCartService implements OnInit {
   }
 
   addToCart(selectedProduct: Product, quantity: string) {
-    let addedProduct = new CartProduct(
-      this.addedProductId = selectedProduct.id,
-      this.addedProductImgSrc = selectedProduct.imgSrc,
-      this.addedProductName = selectedProduct.name,
-      this.addedProductPrice = selectedProduct.price,
-      this.addedProductQuantity = +quantity
-    );
-
-    let sameProduct = this.allCartProducts.find(x => x.id == selectedProduct.id);
-
-    if (sameProduct) {
-      sameProduct.quantity = +quantity;
-      this.editCartProduct(sameProduct).subscribe({
-        next: (data) => {
-          sameProduct = data as CartProduct;
-          this.calculateNumberOfProducts();
-          this.mySnackBar.openSnackBar("Your product has been successfully updated!");
-        },
-        error: (err) => {
-          console.log(err.message);
+    this.getProducts().subscribe({
+      next: (data: any) => {
+        let allProducts = data as CartProduct[];
+        let isExistProd = allProducts.find(x => x.id == selectedProduct.id);
+        if(isExistProd){
+          let cartProd = new CartProduct(isExistProd.id, isExistProd.imgSrc, isExistProd.name, isExistProd.price, isExistProd.quantity + +quantity);
+          this.editCartProduct(cartProd).subscribe({
+            next: (data) => {
+              this.mySnackBar.openSnackBar("Your product is successfully updated!");
+              this.calculateNumberOfProducts();
+            }
+          })
         }
-      })
-    }
-    else {
-      this.addNewCartProduct(addedProduct).subscribe({
-        next: (data) => {
-          this.calculateNumberOfProducts();
-          this.mySnackBar.openSnackBar("Your product has been added to the cart!");
-        },
-        error: (err) => {
-          console.log(err.message);
+        else{
+          let cartProd = new CartProduct(selectedProduct.id, selectedProduct.imgSrc, selectedProduct.name, selectedProduct.price, +quantity);
+          this.addNewCartProduct(cartProd).subscribe({
+            next: (data) => {
+              this.mySnackBar.openSnackBar("Your product is successfully added to the cart!");
+              this.calculateNumberOfProducts();
+            }
+          })
         }
-      })
-    }
-
+      }
+    })
   }
 
   getProducts() {

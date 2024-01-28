@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/Product';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlowersService } from '../../services/flowers.service';
@@ -25,7 +25,6 @@ export class ProductComponent implements OnInit {
     private flowersService: FlowersService,
     public cartService: ShoppingCartService,
     private mySnackBar: SnackBarService,
-    private router: Router,
     private authService : AuthService,
     private logInDialog : MatDialog
   ) { }
@@ -82,5 +81,4 @@ export class ProductComponent implements OnInit {
       this.logInDialog.open(MatDialogComponent);
     }
   }
-
 }

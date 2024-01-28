@@ -21,6 +21,6 @@ export class LoginComponent {
   onSubmit(logInEmail: string, logInPassword: string) {
     this.authService.signIn(logInEmail, logInPassword);
     this.logInForm.reset();
-    // this.mySnackBar.openSnackBar("You are successfully logged in!");    => TU CE DA IDE POZIVANJE MODALA
+    this.mySnackBar.openSnackBar("You are successfully logged in!");
   }
 }

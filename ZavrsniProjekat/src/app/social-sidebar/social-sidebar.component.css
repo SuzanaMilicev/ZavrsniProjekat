@@ -5,3 +5,8 @@
     right: 0;
     top: 60%;
 }
+
+.icon:hover {
+    cursor: pointer;
+    color: rgb(214, 152, 184) !important;
+}
