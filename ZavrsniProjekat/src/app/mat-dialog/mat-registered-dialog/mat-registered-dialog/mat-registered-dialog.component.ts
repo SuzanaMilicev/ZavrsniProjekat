@@ -39,12 +39,10 @@ export class MatRegisteredDialogComponent {
   }
 
   resendEmail() {
-    this.authService.sendVerificationMail(this.userData);
-    this.mySnackBar.openSnackBar("Check your mailbox for another verification e-mail!");
+    this.authService.resendVerificationMail();
   }
 
   closeDialog() {
     this.dialogRef.close();
   }
-
 }

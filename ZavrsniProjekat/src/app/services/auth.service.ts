@@ -17,7 +17,7 @@ export class AuthService {
     private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth,
     public router: Router,
-    private mySnackBar : SnackBarService
+    private mySnackBar: SnackBarService
   ) {
     this.angularFireAuth.authState.subscribe((user: any) => {
       if (user) {
@@ -105,11 +105,30 @@ export class AuthService {
 
   getToken() {
     let user = null;
-    if(localStorage){
+    if (localStorage) {
       user = JSON.parse(localStorage.getItem('user')!);
     }
     const token = user !== null ? user.stsTokenManager.accessToken : null;
     return token;
   }
 
+  resendVerificationMail() {
+    this.angularFireAuth.authState.subscribe((user: any) => {
+      if (user && !user.emailVerified) {
+        sendEmailVerification(user)
+          .then(() => {
+            this.mySnackBar.openSnackBar("Check you mailbox for another verification mail!");
+          })
+      }
+    }
+    )
+  }
+
+  forgotPassword(email: string) {
+    this.angularFireAuth.sendPasswordResetEmail(email).then(() => {
+      this.router.navigate(['login']);
+    }, err => {
+      this.mySnackBar.openSnackBar("Something went wrong.");
+    })
+  }
 }

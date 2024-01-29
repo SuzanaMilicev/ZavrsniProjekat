@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="text-style mt-3">
-                    <a class="text-dark text-decoration-none" href="#">Forgot password?</a> <br>
+                    <a class="text-dark text-decoration-none link-hover" (click)="forgotPassword(signUpEmail.value)"><small>Forgot password?</small></a> <br>
                     <button class="btn btn-outline-secondary form-control-sm mt-3" type="submit"
                         [disabled]="!signUpForm.valid">Sign Up</button>
                 </div>
