@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="text-style mt-3">
-                    <a class="text-dark text-decoration-none" href="#">Forgot password?</a> <br>
+                    <a class="text-dark text-decoration-none link-hover" (click)="forgotPassword(logInEmail.value)"><small>Forgot password?</small></a> <br>
                     <button class="btn btn-outline-secondary mt-2" type="submit" [disabled]="!logInForm.valid">Log
                         in</button>
                 </div>

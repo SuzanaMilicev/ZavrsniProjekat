@@ -28,3 +28,7 @@ input.ng-invalid.ng-touched{
     text-align: left;
 }
 
+.link-hover :hover{
+    cursor: pointer;
+    font-weight: bold !important;
+}

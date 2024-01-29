@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FlowersService } from '../services/flowers.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { SnackBarService } from '../services/snack-bar.service';
 
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private flowersService: FlowersService,
     private router: Router,
-    private mySnackBar: SnackBarService
+    private mySnackBar: SnackBarService,
   ) { }
 
   ngOnInit() {

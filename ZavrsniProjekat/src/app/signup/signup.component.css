@@ -9,7 +9,7 @@
     padding-top: 100px;
 }
 
-input, button, label, a {
+input, button, label {
     width: 250px;
     margin: 0 auto;
     font-size: 14px;
@@ -27,6 +27,11 @@ input.ng-invalid.ng-touched{
 .text-style {
     width: 250px;
     text-align: left;
+}
+
+.link-hover :hover{
+    cursor: pointer;
+    font-weight: bold !important;
 }
 
 

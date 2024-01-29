@@ -18,7 +18,6 @@ export class SignupComponent {
     private mySnackBar: SnackBarService,
     private authService : AuthService,
     private signUpDialog : MatDialog
-
   ) {
   }
 
@@ -27,4 +26,14 @@ export class SignupComponent {
     this.signUpDialog.open(MatRegisteredDialogComponent);
     this.signUpForm.reset();
   }
+
+  forgotPassword(signUpEmail: string) {
+    if (signUpEmail) {
+      this.authService.forgotPassword(signUpEmail);
+      this.mySnackBar.openSnackBar("Our team will send you an e-mail with steps for password-recovery!");
+    }
+    else {
+      this.mySnackBar.openSnackBar("Please enter your contact e-mail!");
+    }
+}
 }
