@@ -9,7 +9,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrl: './category.component.css'
 })
 export class CategoryComponent implements OnInit{
+
   products: Product[] = [];
+  currentProductCat = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -18,16 +20,22 @@ export class CategoryComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.currentProductCat = this.route.snapshot.params['catId'];
     this.getProductsByCategory(this.route.snapshot.params['catId']);
     this.route.params.subscribe(
       (params: Params) => {
         this.getProductsByCategory(params['catId']);
+        this.currentProductCat = params['catId'];
       }
-    )
+    );
   }
 
   getProductsByCategory(catId: number){
-    this.products = this.flowersService.getProductsByCategory(catId);
+    this.flowersService.getProductsByCategory(catId).subscribe({
+      next: (data) => {
+        this.products = data;
+      }
+    })
   }
 
   selectedProduct(catId: number){

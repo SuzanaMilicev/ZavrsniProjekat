@@ -40,15 +40,19 @@
                 </ul>
             </div>
 
-            <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link me-3" routerLink="/login">Login</a>
-            </div>
             <ng-template [ngIf]="authService.isLoggedIn">
+                <a class="nav-link me-3 signout-link" (click)="onSignOut()"><small>Sign Out</small></a>
                 <a class="link-secondary me-3" routerLink="/shopping-cart">
                     <i class="fa fa-shopping-cart text-dark icon" aria-hidden="true"></i>
                     <span class="badge rounded-pill badge-notification bg-secondary">{{prodNumber}}</span>
                 </a>
             </ng-template>
+            <ng-template [ngIf]="!authService.isLoggedIn">
+                <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link me-3" routerLink="/login">Login</a>
+                </div>
+            </ng-template>
+
         </div>
     </div>
 </nav>
