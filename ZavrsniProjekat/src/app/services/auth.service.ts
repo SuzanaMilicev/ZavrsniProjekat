@@ -70,7 +70,7 @@ export class AuthService {
         if (localStorage) {
           localStorage.removeItem('user');
         }
-        this.router.navigate(['sign-in']);
+        this.router.navigate(['/']);
         this.mySnackBar.openSnackBar("You have successfully signed out.");
       })
   }

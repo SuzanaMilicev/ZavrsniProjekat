@@ -3,3 +3,8 @@
     --bs-nav-link-hover-color: maroon;
     font-weight: bold;
 }
+
+.signout-link :hover {
+    cursor: pointer !important;
+    font-weight: bold !important;
+}

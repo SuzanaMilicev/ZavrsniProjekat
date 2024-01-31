@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { CartProduct } from '../models/CartProduct';
 import { AuthService } from '../services/auth.service';
+import { SnackBarService } from '../services/snack-bar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,9 @@ export class HeaderComponent {
 
   constructor(
     private CartService: ShoppingCartService,
-    public authService : AuthService
+    public authService : AuthService,
+    private mySnackBar : SnackBarService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -29,5 +33,9 @@ export class HeaderComponent {
     this.CartService.numberOfProducts.subscribe((res: number) => {
       this.prodNumber = res;
     })
+  }
+
+  onSignOut() {
+    this.authService.signOut();
   }
 }

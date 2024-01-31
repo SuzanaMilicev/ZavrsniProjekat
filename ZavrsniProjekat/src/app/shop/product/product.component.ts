@@ -53,18 +53,29 @@ export class ProductComponent implements OnInit {
   }
 
   getProductById(catId: number) {
-    let temp = this.flowersService.getProductById(catId);
-    if (temp) {
-      this.selectedProduct = temp;
-    }
+    this.flowersService.getProductById(catId).subscribe({
+      next: (data) => {
+        if(data){
+          this.selectedProduct = data;
+        }
+      }
+    })
   }
 
   nextProduct() {
-    this.selectedProduct = this.flowersService.getNextProduct(this.selectedProduct.id);
+    this.flowersService.getNextProduct(this.selectedProduct.id).subscribe({
+      next: (data) => {
+        this.selectedProduct = data;
+      }
+    });
   }
 
   previousProduct() {
-    this.selectedProduct = this.flowersService.getPrevProduct(this.selectedProduct.id);
+    this.flowersService.getPrevProduct(this.selectedProduct.id).subscribe({
+      next: (data) => {
+        this.selectedProduct = data;
+      }
+    })
   }
 
   onAddToCart(product: Product, quantity: string) {

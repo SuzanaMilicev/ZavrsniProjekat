@@ -8,14 +8,17 @@
                         <input type="text" class="form-control border-bottom" id="name" name="name"
                             formControlName="name" placeholder="name">
                         <label for="name">First name <span style="color: red;">*</span>:</label>
-                        <span class="error-msg"
-                            *ngIf="!checkoutForm.controls['name'].valid && checkoutForm.controls['name'].touched">
-                            First name must contain at least 3 characters.
-                        </span><br>
-                        <span class="error-msg"
-                            *ngIf="checkoutForm.controls['name'].errors?.['required'] && checkoutForm.controls['name'].touched">
-                            First name is required.
-                        </span>
+                        <div *ngIf="checkoutForm && checkoutForm.controls['name']">
+                            <span class="error-msg"
+                                *ngIf="!checkoutForm.controls['name'].valid && checkoutForm.controls['name'].touched">
+                                <span *ngIf="checkoutForm.controls['name'].errors?.['required']">
+                                    First name is required.
+                                </span>
+                                <span *ngIf="checkoutForm.controls['name'].errors?.['minlength']">
+                                    First name must contain at least 3 characters.
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -24,14 +27,17 @@
                         <input type="text" class="form-control border-bottom" id="surname" name="surname"
                             formControlName="surname" placeholder="surname">
                         <label for="surname">Last name <span style="color: red;">*</span>:</label>
-                        <span class="error-msg"
-                            *ngIf="!checkoutForm.controls['surname'].valid && checkoutForm.controls['surname'].touched">
-                            Last name must contain at least 3 characters.
-                        </span><br>
-                        <span class="error-msg"
-                            *ngIf="checkoutForm.controls['surname'].errors?.['required'] && checkoutForm.controls['surname'].touched">
-                            Last name is required.
-                        </span>
+                        <div *ngIf="checkoutForm && checkoutForm.controls['surname']">
+                            <span class="error-msg"
+                                *ngIf="!checkoutForm.controls['surname'].valid && checkoutForm.controls['surname'].touched">
+                                <span *ngIf="checkoutForm.controls['surname'].errors?.['required']">
+                                    Last name is required.
+                                </span>
+                                <span *ngIf="checkoutForm.controls['surname'].errors?.['minlength']">
+                                    Last name must contain at least 3 characters.
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -69,14 +75,17 @@
                         <input type="text" class="form-control border-bottom" id="address" name="address"
                             formControlName="address" placeholder="address">
                         <label for="phone">Address <span style="color: red;">*</span>:</label>
-                        <span class="error-msg"
-                            *ngIf="!checkoutForm.controls['address'].valid && checkoutForm.controls['address'].touched">
-                            Address must contain at least 3 characters.
-                        </span><br>
-                        <span class="error-msg"
-                            *ngIf="checkoutForm.controls['address'].errors?.['required'] && checkoutForm.controls['address'].touched">
-                            Address is required.
-                        </span>
+                        <div *ngIf="checkoutForm && checkoutForm.controls['address']">
+                            <span class="error-msg"
+                                *ngIf="!checkoutForm.controls['address'].valid && checkoutForm.controls['address'].touched">
+                                <span *ngIf="checkoutForm.controls['address'].errors?.['required']">
+                                    Address is required.
+                                </span>
+                                <span *ngIf="checkoutForm.controls['address'].errors?.['minlength']">
+                                    Address must contain at least 3 characters.
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 

@@ -72,8 +72,13 @@ export class ShoppingCartComponent implements OnInit {
       })
     }
     else {
-      this.subtotal = 0;
-      this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
+      if (+newQuantity == 0) {
+        this.remove(product);
+      }
+      else {
+        this.subtotal = 0;
+        this.mySnackBar.openSnackBar("Quantity must be between 1 and 100!");
+      }
     }
   }
 

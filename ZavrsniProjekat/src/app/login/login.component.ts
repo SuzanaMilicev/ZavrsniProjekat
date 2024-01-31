@@ -19,14 +19,9 @@ export class LoginComponent {
   }
 
   onSubmit(logInEmail: string, logInPassword: string) {
-    if (this.authService.isLoggedIn) {
-      this.authService.signIn(logInEmail, logInPassword);
-      this.logInForm.reset();
-      this.mySnackBar.openSnackBar("You are successfully logged in!");
-    }
-    else {
-      this.mySnackBar.openSnackBar("No account matches this combination of e-mail and password.");
-    }
+    this.authService.signIn(logInEmail, logInPassword);
+    this.logInForm.reset();
+    this.mySnackBar.openSnackBar("You are successfully logged in!");
   }
 
   forgotPassword(logInEmail: string) {
