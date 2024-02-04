@@ -27,7 +27,6 @@ export class AuthService {
         }
       }
       else {
-        //za log out, da li treba?
         if (localStorage) {
           localStorage.setItem('user', 'null');
         }
@@ -110,18 +109,6 @@ export class AuthService {
     }
     const token = user !== null ? user.stsTokenManager.accessToken : null;
     return token;
-  }
-
-  resendVerificationMail() {
-    this.angularFireAuth.authState.subscribe((user: any) => {
-      if (user && !user.emailVerified) {
-        sendEmailVerification(user)
-          .then(() => {
-            this.mySnackBar.openSnackBar("Check you mailbox for another verification mail!");
-          })
-      }
-    }
-    )
   }
 
   forgotPassword(email: string) {

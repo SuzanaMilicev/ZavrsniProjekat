@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { CartProduct } from '../models/CartProduct';
-import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from '../services/snack-bar.service';
-import { MyUser } from '../models/My User';
 
 @Component({
   selector: 'app-shopping-cart',
